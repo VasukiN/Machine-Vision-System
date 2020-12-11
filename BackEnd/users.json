@@ -1,0 +1,13 @@
+{
+    "users": [{
+            "userId": "Admin",
+            "password": "Admin"
+
+        },
+        {
+            "userId": "System",
+            "password": "System"
+        }
+
+    ]
+}

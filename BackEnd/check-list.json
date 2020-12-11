@@ -1,0 +1,1 @@
+{"checks":[{"CheckName":"OCR Check","Description":"Checks character associated with the product"},{"CheckName":"Measurement Check","Description":"Checks height and width(size) of the product"},{"CheckName":"Color Check","Description":"Checks the color for the products"},{"CheckName":"Bar code checking","Description":"It checks bar code for each of the product"}]}

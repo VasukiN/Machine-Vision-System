@@ -1,0 +1,21 @@
+{
+  "name": "BackEnd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "get-image-colors": "^2.0.1",
+    "node-cmd": "^3.0.0",
+    "sharp": "^0.25.4",
+    "tesseract.js": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
