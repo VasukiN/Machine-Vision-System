@@ -1,0 +1,28 @@
+
+.login-body{
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+.login-container{
+    background-color: rgba(45, 66, 94, 0.5);;
+    margin: 8.7em;
+}
+.login-form{
+    padding: 6em;
+}
+.login-detail{
+    padding: 5em;
+}
+.form-control{
+    border-radius: 4px;
+    line-height: 3em;
+    width: 35vw;
+    border: 1px solid white
+}
+.button-control{
+    border-radius: 4px;
+    line-height: 3em;
+    border: 1px solid white;
+    width: 15vw;
+}

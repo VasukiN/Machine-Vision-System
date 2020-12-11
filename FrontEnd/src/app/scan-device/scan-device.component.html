@@ -1,0 +1,187 @@
+<div class="content">
+  <!-- <div style="padding: 1em;" *ngIf="!existingDevice">
+    <div class="alert alert-primary alert-dismissible" data-auto-dismiss role="alert">
+      <button class="close" aria-label="close" data-dismiss="alert">&times;</button>
+      <span id="alertMsg">Please enter the registered device name</span>
+    </div>
+  </div> -->
+  <h5 style="text-align: center;padding: 0.5em;">SCAN YOUR REGISTERED DEVICE</h5>
+  <div class="scan-form">
+    <div style="padding: 0.5em;">
+      <div style="padding: 0.5em;">
+        <label>Select the registered device name to be scanned</label>
+      </div>
+      <div>
+        <select *ngIf="currentDeviceLists.length>0" [(ngModel)]="selectedDeviceName" class="custom-select mr-sm-2"
+          id="inlineFormCustomSelect">
+          <option selected>{{selectedDeviceName !== 'Choose device...'? 'Choose device...':selectedDeviceName}}</option>
+          <option *ngFor="let name of currentDeviceLists" [value]="name">{{name}}</option>
+        </select>
+      </div>
+    </div>
+    <div style="padding: 0.5em;">
+      <div style="padding: 0.5em;">
+        <label>Browse the image of the device to be scanned</label>
+      </div>
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+          [(ngModel)]="imageName">
+        <label class="custom-file-label" for="inputGroupFile01">{{imageName}}</label>
+      </div>
+    </div>
+    <div class="add-button" (click)="scanDevice()">
+      <span style="cursor: pointer;">Scan Device</span>
+    </div>
+  </div>
+  <div class="table-form" *ngIf="isScanComplete">
+    <table class="table">
+      <thead>
+        <tr>
+          <th *ngFor="let col of ['DeviceName','Checks']">{{col}}</th>
+          <th *ngFor="let col of testedChecks">{{col}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of scannedResult">
+        <tr>
+          <th class="weight-change" [attr.rowspan]="data['selectedChecks'].length">{{data['deviceName']}}</th>
+          <th class="weight-change">
+            <mat-expansion-panel (opened)="openValueForCheck(data['deviceName'],data['selectedChecks'][0]['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{data['selectedChecks'][0]['checkName']}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValue.dataset && tableDeviceValue.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValue.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValue.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </th>
+          <td *ngFor="let col of testedChecks">
+            <mat-expansion-panel *ngIf="data['selectedChecks'][0]['checkValue'] === 'passed'"
+              (opened)="openValueForScannedResult(data['deviceName'],data['selectedChecks'][0]['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <fa-icon style="color: green;" [icon]="faCheck"></fa-icon>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValueScanned.dataset && tableDeviceValueScanned.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValueScanned.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValueScanned.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="data['selectedChecks'][0]['checkValue']  === 'failed'"
+              (opened)="openValueForScannedResult(data['deviceName'],data['selectedChecks'][0]['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <fa-icon style="color: red;" [icon]="faTimes">
+                  </fa-icon>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValueScanned.dataset && tableDeviceValueScanned.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValueScanned.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValueScanned.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </td>
+        </tr>
+        <tr *ngFor="let checks of data['selectedChecks'] | slice:1">
+          <th class="weight-change">
+            <mat-expansion-panel (opened)="openValueForCheck(data['deviceName'],checks['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{checks['checkName']}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValue.dataset && tableDeviceValue.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValue.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValue.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </th>
+          <td *ngFor="let col of testedChecks">
+            <mat-expansion-panel *ngIf="checks['checkValue'] === 'passed'"
+              (opened)="openValueForScannedResult(data['deviceName'],checks['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <fa-icon style="color: green;" [icon]="faCheck"></fa-icon>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValueScanned.dataset && tableDeviceValueScanned.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValueScanned.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValueScanned.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="checks['checkValue'] === 'failed'"
+              (opened)="openValueForScannedResult(data['deviceName'],checks['checkName'])"
+              (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <fa-icon style="color: red;" [icon]="faTimes"></fa-icon>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValueScanned.dataset && tableDeviceValueScanned.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValueScanned.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValueScanned.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

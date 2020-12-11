@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body, body > div{
+    margin: 0px;
+    font-family:Siemens Sans, Arial, sans-serif;
+}
+
+html, body { height: 100%; }
+body { margin: 0;  }
+
+.cdk-global-overlay-wrapper, .cdk-overlay-container,.cdk-overlay-connected-position-bounding-box {
+    z-index: 99999 !important;
+ }
+ .blue-snackbar {
+    background: rgb(27, 62, 92);
+  }

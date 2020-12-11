@@ -1,0 +1,47 @@
+<div [ngClass]="isUserLoggedIn === 'true'? '':'background-img' ">
+  <div class="header">
+    <div class="logo-header">
+      <div class="logo-img">
+        <div>
+          <img src="../../assets/siemens-new-logo.svg" alt="logo" height="80" width="200">
+        </div>
+        <div>
+          <div><span>Automated Vision System</span></div>
+        </div>
+      </div>
+      <div class="sign-out" [ngClass]="isUserLoggedIn ? '':'hide'">
+        <div (click)="logout()">
+          <h6 class="user-pos">Hello Admin !</h6>
+          <fa-icon [icon]="faSignOutAlt"></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!isUserLoggedIn">
+    <app-login [isUserLogOff]="isUserLogOff"></app-login>
+  </div>
+</div>
+<div style="display: flex">
+  <div *ngIf='isUserLoggedIn' class="side-bar">
+    <div class="color-icon">
+      <a [routerLink]="['/home']" routerLinkActive="active">
+        <fa-icon [icon]="faSearchPlus"></fa-icon><span style="padding-left: 0.5em">Scan Device</span>
+      </a>
+    </div>
+    <div class="color-icon">
+      <a [routerLink]="['/register-device']" routerLinkActive="active">
+        <fa-icon [icon]="faReceipt"></fa-icon><span style="padding-left: 0.5em">Register Device</span>
+      </a>
+    </div>
+    <div class="color-icon">
+      <a [routerLink]="['/checks-lists']" routerLinkActive="active">
+        <fa-icon [icon]="faPlusSquare"></fa-icon><span style="padding-left: 0.5em">Add Checks</span>
+      </a>
+    </div>
+  </div>
+  <div *ngIf='isUserLoggedIn' style="background-color:#EFF6FA;width:100%">
+    <router-outlet style="display: none"></router-outlet>
+  </div>
+</div>
+
+<!-- <router></router> -->

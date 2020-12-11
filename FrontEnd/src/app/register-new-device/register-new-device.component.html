@@ -1,0 +1,60 @@
+<div mat-dialog-content>
+  <form [formGroup]="checkForm">
+    <h4>Register New Device</h4>
+    <div class="row" *ngFor="let checks of checkForm.controls.deviceName.controls;let i=index">
+      <div *ngIf="i===0">
+        <label for="inputEmail3" class="col-sm-12 col-form-label">Enter Device Name</label>
+      </div>
+      <div class="col-sm-12" *ngIf="i===0">
+        <input type="text" [formControl]="checks" class="form-control" required>
+      </div>
+    </div>
+    <div *ngIf="allChecksForDropDown.length>0">
+      <mat-form-field style="width: 100%;margin-top: 0.5rem;">
+        <mat-label>Select required checks</mat-label>
+        <mat-select panelClass="custom-panel" multiple>
+          <mat-option *ngFor="let check of allChecksForDropDown" [value]="check" (click)="selectChecks(check)">
+            {{check}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!-- <div class="row"> -->
+    <!-- / -->
+    <div class="row" *ngFor="let checks of checkForm.controls['OCR Check'].controls;let i=index">
+      <div>
+        <label for="inputEmail3" class="col-sm-12 col-form-label">Enter characters to be checked for the device</label>
+      </div>
+      <div class="col-sm-12 bottom">
+        <input [formControl]="checks" type="text" class="form-control" required>
+      </div>
+    </div>
+    <div class="row" *ngFor="let checks of checkForm.controls['Measurement Check'].controls;let i=index">
+      <div *ngIf="i === 0">
+        <label for="inputEmail3" class="col-sm-12 col-form-label">Enter height of the device in cm to be measured</label>
+      </div>
+      <div class="col-sm-12 bottom" *ngIf="i === 0">
+        <input [formControl]="checks" type="text" class="form-control" required>
+      </div>
+      <div *ngIf="i === 1">
+        <label for="inputEmail3" class="col-sm-12 col-form-label">Enter weight of the device in cm to be measured</label>
+      </div>
+      <div class="col-sm-12 bottom" *ngIf="i === 1">
+        <input [formControl]="checks" type="text" class="form-control" required>
+      </div>
+    </div>
+    <div class="row" *ngFor="let checks of checkForm.controls['Color Check'].controls;let i=index">
+      <div>
+        <label for="inputEmail3" class="col-sm-12 col-form-label">Enter color to be checked for the device</label>
+      </div>
+      <div class="col-sm-12 bottom">
+        <input [formControl]="checks" type="text" class="form-control" required>
+      </div>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <div mat-button mat-dialog-close type="submit" class="add-button" (click)="registerNewDevice()">
+    <span style="cursor: pointer;">Register</span>
+  </div>
+</div>

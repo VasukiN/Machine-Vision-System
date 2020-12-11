@@ -1,0 +1,111 @@
+<div class="content">
+  <div style="text-align: center">
+    <div class="add-button" (click)="registerNewDevice()">
+      <fa-icon [icon]="faPlus"></fa-icon><span style="padding-left: 0.5em;cursor: pointer;">Register New Device</span>
+    </div>
+  </div>
+  <div style="text-align: center;padding: 1em;">
+    <span><strong>Important Note:-</strong></span><span> Please register the colors in RGB HEX format as mentioned in
+      the link -
+      <a href="https://web.njit.edu/~walsh/rgb.html" rel="noopener noreferrer" target="_blank">click here</a> </span>
+  </div>
+  <div class="custom-table" *ngIf="tableProperty.dataset?.length>0 && tableProperty.columns?.length>0">
+    <table class="table shadow">
+      <thead>
+        <tr>
+          <th *ngFor="let col of tableProperty.columns">{{col}}</th>
+          <th *ngFor="let col of deleteColumns">{{col}}</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let data of tableProperty.dataset">
+        <tr >
+          <th class="weight-change"  [attr.rowspan]="data[1].length">{{data[0]}}</th>
+          <th class="weight-change">
+            <mat-expansion-panel (opened)="openValueForCheck(data[0],data[1][0])" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{data[1][0]}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValue.dataset && tableDeviceValue.columns">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValue.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValue.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </th>
+          <td *ngFor="let col of deleteColumns">
+            <fa-icon [icon]="faTrash" (click)="deleteDevice(data[0])"></fa-icon>
+          </td>
+        </tr>
+        <tr *ngFor="let checks of data[1] | slice:1">
+          <th class="weight-change">
+            <mat-expansion-panel (opened)="openValueForCheck(data[0],checks)" (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{checks}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <table class="table" *ngIf="tableDeviceValue">
+                <thead>
+                  <tr>
+                    <th *ngFor="let column of tableDeviceValue.columns">{{column}}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of tableDeviceValue.dataset">
+                    <td *ngFor='let value of data'>{{value}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-expansion-panel>
+          </th>
+          <td *ngFor="let col of deleteColumns">
+            <fa-icon [icon]="faTrash" (click)="deleteCheck(data[0],checks)"></fa-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- <ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Register New Device</h4>
+    <button type="button" (click)="modal.dismiss('Cross click')">&times;</button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group row">
+      <div>
+        <label for="inputEmail3" class="col-sm-2 col-form-label">DeviceName</label>
+      </div>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" [(ngModel)]="enteredCheckName" placeholder="Check Name"
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div>
+        <label for="inputPassword3" class="col-sm-2 col-form-label">Description</label>
+      </div>
+      <div class="col-sm-10">
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"
+            [(ngModel)]="imageName">
+          <label class="custom-file-label" for="inputGroupFile01">{{imageName}}</label>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Save click')">Register</button>
+  </div>
+</ng-template> -->

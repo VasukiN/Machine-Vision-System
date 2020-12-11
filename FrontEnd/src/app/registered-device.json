@@ -1,0 +1,12 @@
+{
+    "devices":[
+        {
+            "DeviceName":"Power Cell Battery",
+            "SelectedChecks":["OCR Check","Measurement Check","Color Check"]
+        },
+        {
+            "DeviceName":"Airtel Hotspot",
+            "SelectedChecks":["OCR Check","Measurement Check","Color Check"]
+        }
+    ]
+}

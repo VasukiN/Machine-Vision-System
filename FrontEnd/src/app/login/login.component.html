@@ -1,0 +1,17 @@
+<div *ngIf="!isUserLogOff">
+  <div class="login-body">
+    <div class="login-container">
+      <div class="login-form">
+        <div style="padding: 0.5em">
+          <input class="form-control" type="text" placeholder="User Name" [(ngModel)]="userName">
+        </div>
+        <div style="padding: 0.5em">
+          <input class="form-control" type="password" placeholder="Password" [(ngModel)]="password">
+        </div>
+        <div style="padding: 1em;text-align: center">
+          <button class="button-control" (click)="navigateToDashboard()">Log In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

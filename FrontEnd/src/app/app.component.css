@@ -1,0 +1,54 @@
+.logo-header {
+  background-color: white;
+  margin-bottom: -3em;
+}
+
+.logo-img {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.sign-out {
+  text-align: end;
+  position: relative;
+  bottom: 3.5em;
+  font-size: 1.3em;
+  padding-right: 1em;
+  cursor: pointer;
+}
+.user-pos{
+    position: relative;
+    top: 2em;
+    padding-right: 3em;
+}
+.side-bar {
+  width: 15%;
+  height: 150vh;
+  background-color: #052F5F;
+}
+.hide{
+    display: none;
+}
+.background-img {
+  background-image: url(../assets/machine-vision3.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.color-icon {
+  color: white;
+  padding-bottom: 1em;
+  padding-top: 1em;
+  padding-left: 0.5em;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  transition: 1s;
+  color: rgb(153, 196, 245)
+}

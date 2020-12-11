@@ -1,0 +1,28 @@
+{
+  "values": [{
+    "Power Cell Battery": {
+      "OCR Check": {
+        "characters": "Hello"
+      },
+      "Measurement Check": {
+        "height": "12",
+        "width": "13"
+      },
+      "Color Check": {
+        "color": "#545454"
+      }
+    },
+    "Airtel Hotspot": {
+      "OCR Check": {
+        "characters": "simplecharactsers"
+      },
+      "Measurement Check": {
+        "height": "1",
+        "width": "2"
+      },
+      "Color Check": {
+        "color": "#fbfbfb"
+      }
+    }
+  }]
+}

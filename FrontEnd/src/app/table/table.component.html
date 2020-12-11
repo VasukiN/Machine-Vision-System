@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr >
+      <th *ngFor="let col of columns">{{col}}</th>
+      <th *ngFor="let col of deleteColumns">{{col}}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of dataset">
+      <td *ngFor='let value of data'>{{value}}</td>
+      <td *ngFor="let col of deleteColumns">
+        <fa-icon [icon]="faTrash" (click)="deleteCheck(data)"></fa-icon>
+      </td>
+    </tr>
+  </tbody>
+</table>

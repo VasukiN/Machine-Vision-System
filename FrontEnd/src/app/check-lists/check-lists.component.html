@@ -1,0 +1,17 @@
+<div class="content">
+  <!-- <div style="padding: 1em;" *ngIf="addedMessage">
+    <app-alert-notification [message]="addedMessage"></app-alert-notification>
+  </div> -->
+  <div style="text-align: center">
+    <div class="add-button" (click)="addNewCheck()">
+      <fa-icon [icon]="faPlus"></fa-icon><span style="padding-left: 0.5em;cursor: pointer;">Add New Check</span>
+    </div>
+  </div>
+  <div class="custom-table" *ngIf="tableProperty.dataset && tableProperty.columns">
+    <div class="shadow">
+      <app-table [columns]="tableProperty.columns" [dataset]="tableProperty.dataset" [deleteColumns]="deleteColumns"
+        (sendResponse)="deleteCheck($event)">
+      </app-table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+::ng-deep .mat-select-panel{
+    background: white !important;
+    color: black !important;
+}
+::ng-deep .mat-form-field-type-mat-select .mat-form-field-label, .mat-select-value{
+    color:black !important;
+  }
+
+  ::ng-deep .mat-selected {
+    color: black !important;
+  }
+  
+ ::ng-deep .mat-select-value-text {
+    color: black !important;
+  }
+  ::ng-deep .mat-option-pseudo-checkbox{
+    color: #4E4C4C;
+  }
+  ::ng-deep .mat-option-text {
+      color: black !important;
+  }
+  ::ng-deep .mat-select-arrow {
+      color: black !important;
+  }
+  .space-btw{
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+  }
+  .width{
+    width: 100%
+  }
+  .bottom{
+    padding-bottom: 0.5em;
+  }
+  .add-button{
+    background-color:#052f5f;
+    color: white;
+    display: inline-block;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    border: 2px solid white;
+    border-radius: 5px;
+}

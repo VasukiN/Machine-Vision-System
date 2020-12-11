@@ -1,0 +1,11 @@
+.add-button{
+    background-color:#052f5f;
+    color: white;
+    display: inline-block;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: 2px solid white;
+    border-radius: 5px;
+}

@@ -1,0 +1,42 @@
+.content {
+  margin: 1em;
+  width: 98%;
+  height: 95%;
+  background-color: white;
+}
+
+.add-button {
+  background-color: #052f5f;
+  color: white;
+  display: inline-block;
+  padding: 0.5em;
+  margin-top: 2em;
+  border: 2px solid white;
+  border-radius: 5px;
+}
+
+.scan-form {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+  margin-left: 20em;
+  margin-right: 20em;
+  padding-bottom: 2em;
+}
+
+.table-form {
+  margin-top: 2em;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.weight-change {
+  font-weight: 400;
+}
+::ng-deep .mat-expansion-panel{
+  box-shadow: none !important;
+  margin: -10px !important;
+}
+::ng-deep .mat-expansion-panel-header{
+  padding-right: 65px !important;
+}
